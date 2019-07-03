@@ -291,6 +291,10 @@ module Ransack
         expect(s.to_sql).to match /#{people_name_field} = 'Ernie'/
       end
 
+      it "works" do
+        Search.new(Person, notes_id_in: [1,2,3]).result.to_sql
+      end
+
       it 'evaluates nested conditions' do
         s = Search.new(Person, children_name_eq: 'Ernie',
           g: [
